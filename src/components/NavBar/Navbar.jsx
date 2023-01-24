@@ -25,7 +25,7 @@ const Navbar = ({totalItems}) => {
                 <Badge badgeContent={totalItems} color='secondary' overlap="rectangular">
                     <ShoppingCart />
                 </Badge>
-            </IconButton>
+            </IconButton>    
         </div> )}
     </Toolbar>
     </AppBar>
