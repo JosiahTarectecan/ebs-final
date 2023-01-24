@@ -56,6 +56,7 @@ fetchCart();
           <Routes>
           <Route path='/' element={<Products products = {products} onAddToCart = {handleAddToCart}/>} /> 
           <Route path='/cart' element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} handleEmptyCart={handleEmptyCart} />} />
+          
         </Routes>
       </div>
     </Router>

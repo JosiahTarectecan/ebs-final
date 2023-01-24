@@ -19,13 +19,13 @@ const Navbar = ({totalItems}) => {
             EastBlueSaga
         </Typography>
         <div className={classes.grow}/>
-        {location.pathname == '/' && (
+        {location.pathname === '/' && (
         <div className={classes.button}>
             <IconButton component={Link} to="/cart" aria-label='Show cart items' color='inherit'>
                 <Badge badgeContent={totalItems} color='secondary' overlap="rectangular">
                     <ShoppingCart />
                 </Badge>
-            </IconButton>    
+            </IconButton> 
         </div> )}
     </Toolbar>
     </AppBar>
