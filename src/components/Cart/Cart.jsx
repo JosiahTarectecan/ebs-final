@@ -7,7 +7,7 @@ import CartItem from './CartItem/CartItem'
 const Cart = ({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}) => {
 
     
-
+    const isEmpty = !cart?.line_items.length;
     const classes = useStyles();
     
     const EmptyCart = () => (
@@ -32,7 +32,7 @@ const Cart = ({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}
                 </Typography>
                     <div>
                         <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Empty Cart</Button>
-                        <Button className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Checkout</Button>
+                        <Button component={Link} to="/checkout" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Checkout</Button>
                     </div>
             </div>
         </>
@@ -44,7 +44,7 @@ const Cart = ({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}
     <Container>
     <div className={classes.toolbar}/>
     <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
-    {cart.line_items && !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+    {isEmpty ? <EmptyCart /> : <FilledCart />}
     </Container>
   )
 }
