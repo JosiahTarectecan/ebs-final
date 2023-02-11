@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography} from '@material-ui/core';
-import { ShoppingCart } from '@mui/icons-material';
+import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography, InputBase} from '@material-ui/core';
+import { ShoppingCart, Search } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../../assets/Eastbluesagalogo2.png';
@@ -18,7 +18,41 @@ const Navbar = ({totalItems}) => {
             <img src={logo} alt='Commerce.js' height="50px" className={classes.image}/>
             EastBlueSaga
         </Typography>
+        
+<IconButton component={Link} to="/about" aria-label="Show products" color="inherit">
+    <Badge>
+        <Typography variant="body2">About</Typography>
+    </Badge>
+</IconButton>
+
+<IconButton component={Link} to="/home" aria-label="Homepage" color="inherit">
+    <Badge>
+        <Typography variant="body2">Home</Typography>
+    </Badge>
+</IconButton>
+<IconButton component={Link} to="/" aria-label="Products" color="inherit">
+    <Badge>
+        <Typography variant="body2">Products</Typography>
+    </Badge>
+</IconButton>
+
+        
         <div className={classes.grow}/>
+        {location.pathname === '/' && (
+        <div className={classes.search}>
+            <div className={classes.searchIcon}>
+                <Search />
+            </div>
+            <InputBase
+                placeholder="Search products…"
+                classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+            />
+        </div>
+        )}
         {location.pathname === '/' && (
         <div className={classes.button}>
             <IconButton component={Link} to="/cart" aria-label='Show cart items' color='inherit'>
@@ -38,5 +72,6 @@ const Navbar = ({totalItems}) => {
     </>
   )
 }
+
 
 export default Navbar;
