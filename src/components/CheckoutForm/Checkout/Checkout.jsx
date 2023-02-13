@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button} from '@material-ui/core';
-
+import {Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 import {commerce} from '../../../lib/Commerce'
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
@@ -46,11 +46,29 @@ const Checkout = ({cart, onCaptureCheckout, order, error}) => {
         nextStep();
     }
 
-    const Confirmation = () => (
+    let Confirmation = () => order.customer ? (
+        <>
         <div>
-            Confirmation
-        </div>
+            <Typography variant='h5'>Thank you for shopping with EastBlueSaga, {order.customer.firstname} {order.customer.lastname}</Typography>
+            <Divider className={classes.divider}/>
+            <Typography variant="subtitle2">Order ref: {order.customer_reference}</Typography>
+        </div> 
+        <br />
+        <Button component={Link} to="/" variant='outlines' type='button'>Back to Home</Button>
+        </>
+    ) : (
+      <div className={classes.spinner}>
+        <CircularProgress/>
+      </div>
     );
+
+    if(error){
+      <>
+      <Typography variant="h5">Error: {error}</Typography>
+      <br/>
+      <Button component={Link} to="/" variant='outlines' type='button'>Back to Home</Button>
+      </>
+    }
 
     const Form = () => (activeStep === 0 
         ? <AddressForm checkoutToken={checkoutToken} next={next} /> 
@@ -59,6 +77,7 @@ const Checkout = ({cart, onCaptureCheckout, order, error}) => {
         
     return (
         <>
+        <CssBaseline/>
         <div className={classes.toolbar} />
         <main className={classes.layout}>
         <Paper className={classes.paper}>

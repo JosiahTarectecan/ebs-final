@@ -25,12 +25,12 @@ const Navbar = ({totalItems}) => {
     </Badge>
 </IconButton>
 
-<IconButton component={Link} to="/home" aria-label="Homepage" color="inherit">
+<IconButton component={Link} to="/" aria-label="Homepage" color="inherit">
     <Badge>
         <Typography variant="body2">Home</Typography>
     </Badge>
 </IconButton>
-<IconButton component={Link} to="/" aria-label="Products" color="inherit">
+<IconButton component={Link} to="/products" aria-label="Products" color="inherit">
     <Badge>
         <Typography variant="body2">Products</Typography>
     </Badge>
@@ -38,7 +38,7 @@ const Navbar = ({totalItems}) => {
 
         
         <div className={classes.grow}/>
-        {location.pathname === '/' && (
+        {location.pathname === '/products' && (
         <div className={classes.search}>
             <div className={classes.searchIcon}>
                 <Search />
@@ -53,7 +53,7 @@ const Navbar = ({totalItems}) => {
             />
         </div>
         )}
-        {location.pathname === '/' && (
+        {location.pathname === '/products' && (
         <div className={classes.button}>
             <IconButton component={Link} to="/cart" aria-label='Show cart items' color='inherit'>
                 <Badge badgeContent={totalItems} color='secondary' overlap="rectangular">

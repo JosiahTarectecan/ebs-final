@@ -70,12 +70,12 @@ fetchCart();
       <Navbar totalItems={cart && cart.total_items} />
 
           <Routes>
-          <Route path='/' element={<Products products = {products} onAddToCart = {handleAddToCart}/>} /> 
-          <Route path='/cart' element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} handleEmptyCart={handleEmptyCart} />} />
-          <Route path="/checkout" element={
-          <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage}/>} />
-          <Route path="/about" element={<About about={about}/>} />
-          <Route path="/home" element={<Home home={home}/>} />
+          <Route path='/' element={<Home home={home} />} />
+      <Route path='/products' element={<Products products = {products} onAddToCart = {handleAddToCart}/>} /> 
+      <Route path='/cart' element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} handleEmptyCart={handleEmptyCart} />} />
+      <Route path="/checkout" element={
+      <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage}/>} />
+      <Route path="/about" element={<About about={about}/>} />
 
 
         </Routes>

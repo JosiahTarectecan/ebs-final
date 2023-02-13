@@ -1,27 +1,36 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-const useStyles = makeStyles(theme => ({
-    root: {
-      padding: theme.spacing(3, 2),
-    },
-  }));
+import videoBg from './vid/videoplayback_Trim.mp4';
+import './vid/index.css'
+import { Typography, Button} from '@material-ui/core';
+import {Link} from 'react-router-dom';
+
+
+
 const Home = () => {
-    const classes = useStyles();
   return (
-    <Container className={classes.root}>
-      <Typography variant="h4" gutterBottom>
-        About Us
+    <body>
+    <div className='main'>
+      <div className='overlay'></div>
+      <video src={videoBg} autoPlay loop muted />
+      <div className='content'>
+      <Typography variant="h2" gutterBottom>
+      Welcome
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        HI
+      <Typography variant="h2" gutterBottom>
+      To
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        HI
+      <Typography variant="h2" gutterBottom>
+      EastBlueSaga
       </Typography>
-    </Container>
+
+      <Button component={Link} to="/products" variant="contained" size="large" color="primary">
+      Visit Our Products
+      </Button>
+      </div>
+    </div>
+    </body>
   )
 }
+
 
 export default Home
