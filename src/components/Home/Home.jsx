@@ -1,24 +1,20 @@
 import React from 'react'
 import videoBg from './vid/videoplayback_Trim.mp4';
-import './vid/index.css'
+import useStyles from './styles'
 import { Typography, Button} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 
 
 
 const Home = () => {
+  const classes = useStyles();
+
   return (
-    <body>
-    <div className='main'>
-      <div className='overlay'></div>
-      <video src={videoBg} autoPlay loop muted />
-      <div className='content'>
-      <Typography variant="h2" gutterBottom>
-      Welcome
-      </Typography>
-      <Typography variant="h2" gutterBottom>
-      To
-      </Typography>
+    <body className={classes.root}>
+    <div className={classes.main}>
+      <div className={classes.overlay}></div>
+      <video className={classes.video} src={videoBg} autoPlay loop muted />
+      <div className={classes.content}>
       <Typography variant="h2" gutterBottom>
       EastBlueSaga
       </Typography>

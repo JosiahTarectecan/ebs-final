@@ -19,22 +19,30 @@ const Navbar = ({totalItems}) => {
             EastBlueSaga
         </Typography>
         
-<IconButton component={Link} to="/about" aria-label="Show products" color="inherit">
-    <Badge>
-        <Typography variant="body2">About</Typography>
-    </Badge>
-</IconButton>
+        <div className={classes.centerButtons}>
+          <IconButton component={Link} to="/about" aria-label="Show products" color="inherit">
+              <Badge>
+                  <Typography variant="body2">About</Typography>
+              </Badge>
+          </IconButton>
 
-<IconButton component={Link} to="/" aria-label="Homepage" color="inherit">
-    <Badge>
-        <Typography variant="body2">Home</Typography>
-    </Badge>
-</IconButton>
-<IconButton component={Link} to="/products" aria-label="Products" color="inherit">
-    <Badge>
-        <Typography variant="body2">Products</Typography>
-    </Badge>
-</IconButton>
+          <IconButton component={Link} to="/" aria-label="Homepage" color="inherit">
+              <Badge>
+                  <Typography variant="body2">Home</Typography>
+              </Badge>
+          </IconButton>
+          <IconButton component={Link} to="/products" aria-label="Products" color="inherit">
+              <Badge>
+                  <Typography variant="body2">Products</Typography>
+              </Badge>
+          </IconButton>
+          <IconButton component={Link} to="/contact" aria-label="Contact" color="inherit">
+              <Badge>
+                  <Typography variant="body2">Contact</Typography>
+              </Badge>
+          </IconButton>
+        </div>
+
 
         
         <div className={classes.grow}/>

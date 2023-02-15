@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/Commerce';
-import {Products, Navbar, Cart, Checkout, About, Home} from './components';
+import {Products, Navbar, Cart, Checkout, About, Home, Contact} from './components';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { set } from 'react-hook-form';
 
@@ -9,6 +9,7 @@ const App = () => {
   const [cart, setCart] = useState({});
   const [about] = useState({});
   const [home] = useState({});
+  const [contact] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -76,6 +77,7 @@ fetchCart();
       <Route path="/checkout" element={
       <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage}/>} />
       <Route path="/about" element={<About about={about}/>} />
+      <Route path="/contact" element={<Contact contact={contact}/>} />
 
 
         </Routes>
