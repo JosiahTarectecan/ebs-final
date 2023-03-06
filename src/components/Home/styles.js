@@ -2,7 +2,10 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
 
+  body: {
+    margin: 0,
 
+  },
     root: {
         margin: 0,
         padding: 0,

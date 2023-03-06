@@ -3,16 +3,15 @@ import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 
 const StyledMessage = styled.div`
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-color: green;
-font-size: 24px;
-font-weight: bold;
-font-family: "Open Sans", sans-serif;
-
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: green;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
 `;
 
 const StyledContactForm = styled.div`
@@ -23,13 +22,13 @@ const StyledContactForm = styled.div`
   height: 100vh;
   form {
     background-color: #fff;
-    padding: 1.5rem;
+    padding: 1.6rem;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 600px;
     label {
       font-size: 1.2rem;
-      font-family: 'Open Sans', sans-serif;
+      font-family: "Open Sans", sans-serif;
       margin-top: 1rem;
       display: block;
     }
@@ -69,16 +68,21 @@ const StyledConfirmationMessage = styled.div`
   font-size: 18px;
   font-weight: bold;
   padding: 20px;
+  font-family: "Montserrat", sans-serif; /* Change font to Montserrat */
+
   button {
     font-size: 14px;
     padding: 10px 20px;
     margin-top: 20px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;
+    
   }
 `;
+
+
 
 
 
@@ -91,6 +95,24 @@ const Contact = () => {
   
     const sendEmail = (e) => {
       e.preventDefault();
+
+      const userName = form.current.user_name.value.trim();
+  const userEmail = form.current.user_email.value.trim();
+  const message = form.current.message.value.trim();
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!userName || !userEmail || !message || !emailRegex.test(userEmail)) {
+    alert("Please fill in all the fields and enter a valid email address.");
+    return;
+  }
+
+  const lastSentTimestamp = localStorage.getItem("lastSentTimestamp");
+  const now = new Date().getTime();
+  if (lastSentTimestamp && now - lastSentTimestamp < 30 * 60 * 1000) {
+    const remainingTime = Math.ceil((30 * 60 * 1000 - (now - lastSentTimestamp)) / 1000 / 60);
+    alert(`You can only send one message every 30 minutes. Please try again in ${remainingTime} minutes.`);
+    return;
+  }
   
       emailjs
         .sendForm(
@@ -123,10 +145,10 @@ const Contact = () => {
             <input type="submit" value="Send" />
           </form>
         ) : (
-          <StyledMessage>
+          <StyledConfirmationMessage>
             <p>Email sent!</p>
             <button onClick={() => setShowForm(true)}>Send another message</button>
-          </StyledMessage>
+          </StyledConfirmationMessage>
         )}
       </StyledContactForm>
     );

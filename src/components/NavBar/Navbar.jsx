@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography, InputBase} from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Badge, Typography, InputBase} from '@material-ui/core';
 import { ShoppingCart, Search } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Navbar = ({totalItems}) => {
 
   return (
     <>
-    <AppBar position="fixed" className={classes.appBar} color="inherit">
+    <AppBar position="static" className={classes.appBar} color="inherit">
     <Toolbar>
         <Typography component={Link} to="/" variant='h6' className={classes.title} color='inherit'>
             <img src={logo} alt='Commerce.js' height="50px" className={classes.image}/>
@@ -39,6 +39,11 @@ const Navbar = ({totalItems}) => {
           <IconButton component={Link} to="/contact" aria-label="Contact" color="inherit">
               <Badge>
                   <Typography variant="body2">Contact</Typography>
+              </Badge>
+          </IconButton>
+          <IconButton component={Link} to="/login" aria-label="Login" color="inherit">
+              <Badge>
+                  <Typography variant="body2">Login</Typography>
               </Badge>
           </IconButton>
         </div>

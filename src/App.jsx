@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/Commerce';
-import {Products, Navbar, Cart, Checkout, About, Home, Contact} from './components';
+import {Products, Navbar, Cart, Checkout, About, Home, Contact, Login} from './components';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { set } from 'react-hook-form';
 
@@ -10,15 +10,18 @@ const App = () => {
   const [about] = useState({});
   const [home] = useState({});
   const [contact] = useState({});
+  const [login] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
 
 
 
   const fetchProducts = async () => {
-    const {data} = await commerce.products.list();
+    const { data } = await commerce.products.list({ with_variants: true });
     setProducts(data);
-  }
+  };
+  
+  
 
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve())
@@ -70,14 +73,16 @@ fetchCart();
       <div>
       <Navbar totalItems={cart && cart.total_items} />
 
-          <Routes>
-          <Route path='/' element={<Home home={home} />} />
+      <Routes>
+      <Route path='/' element={<Home home={home} />} />
       <Route path='/products' element={<Products products = {products} onAddToCart = {handleAddToCart}/>} /> 
       <Route path='/cart' element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} handleEmptyCart={handleEmptyCart} />} />
       <Route path="/checkout" element={
       <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage}/>} />
       <Route path="/about" element={<About about={about}/>} />
       <Route path="/contact" element={<Contact contact={contact}/>} />
+      <Route path="/login" element={<Login login={login}/>} />
+
 
 
         </Routes>
