@@ -46,6 +46,11 @@ const Navbar = ({totalItems}) => {
                   <Typography variant="body2">Login</Typography>
               </Badge>
           </IconButton>
+          <IconButton component={Link} to="/register" aria-label="Register" color="inherit">
+              <Badge>
+                  <Typography variant="body2">Register</Typography>
+              </Badge>
+          </IconButton>
         </div>
 
 

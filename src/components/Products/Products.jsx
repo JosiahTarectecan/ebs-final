@@ -9,7 +9,7 @@ const Products = ({products, onAddToCart}) => {
     const classes = useStyles();
     return (
         <main className={classes.content}>
-                        <Typography className={classes.message}>Please contact to create a custom order</Typography>
+    <Typography className={classes.message}>Please contact to create a custom order</Typography>
             <div className={classes.toolbar}/>
         <Grid container justifyContent="center" alignItems='center' spacing={4}>
         {products.map((product) => (

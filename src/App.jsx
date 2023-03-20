@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/Commerce';
-import {Products, Navbar, Cart, Checkout, About, Home, Contact, Login} from './components';
+import {Products, Navbar, Cart, Checkout, About, Home, Contact, Login, Account} from './components';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { set } from 'react-hook-form';
 
@@ -10,16 +10,38 @@ const App = () => {
   const [about] = useState({});
   const [home] = useState({});
   const [contact] = useState({});
+  const [account] = useState({});
   const [login] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
 
 
 
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list({ with_variants: true });
-    setProducts(data);
+  const fetchVariants = async (productId) => {
+    try {
+      const { data } = await commerce.products.getVariants(productId);
+      return data;
+    } catch (error) {
+      console.log("Error fetching variants", error);
+      return [];
+    }
   };
+  
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+    const productsWithVariants = await Promise.all(
+      data.map(async (product) => {
+        const variants = await fetchVariants(product.id);
+        return {
+          ...product,
+          variants,
+        };
+      })
+    );
+    setProducts(productsWithVariants);
+  };
+
   
   
 
@@ -28,10 +50,12 @@ const App = () => {
     
   }
 
-  const handleAddToCart = async (productId, quantity) => {
-    const item = await commerce.cart.add(productId, quantity);
-    setCart(item);
-    };
+  const handleAddToCart = async (variantId, quantity) => {
+    const item = await commerce.cart.add(variantId, quantity);
+    setCart(item.cart);
+  };
+  
+    
     const handleUpdateCartQty = async (productId, quantity) => {
     const item = await commerce.cart.update(productId, { quantity });
     setCart(item);
@@ -67,7 +91,7 @@ fetchCart();
   }, []);
 
   console.log(cart);
-
+  console.log(products);
   return (
     <Router>
       <div>
@@ -82,6 +106,8 @@ fetchCart();
       <Route path="/about" element={<About about={about}/>} />
       <Route path="/contact" element={<Contact contact={contact}/>} />
       <Route path="/login" element={<Login login={login}/>} />
+      <Route path="/account" element={<Account account={account} /> } />
+
 
 
 
