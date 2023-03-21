@@ -13,6 +13,9 @@ const Product = ({ product, onAddToCart }) => {
     const variantId = event.target.value;
     const variant = product.variants.find((v) => v.id === variantId);
     setSelectedVariant(variant);
+    console.log("selected variant ID:", variantId);
+console.log("selected variant:", variant);
+
   };
         
   return (
@@ -28,17 +31,18 @@ const Product = ({ product, onAddToCart }) => {
             </Typography>
             </div>
             <Typography dangerouslySetInnerHTML={{ __html: product.description}} variant='body2' color='textSecondary'/>
+
             <Select className={classes.select} value={selectedVariant.id} onChange={handleVariantChange}>
           {product.variants.map((variant) => (
             <MenuItem key={variant.id} value={variant.id}>
               {variant.name}
             </MenuItem>
           ))}
-        </Select>
+          </Select>
 
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(selectedVariant.id, 1)}>
+        <IconButton aria-label="Add to Cart" onClick={ () => onAddToCart(selectedVariant.id, 1)}>
             <AddShoppingCart />
         </IconButton>
         </CardActions>

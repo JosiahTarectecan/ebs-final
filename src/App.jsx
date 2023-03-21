@@ -51,9 +51,19 @@ const App = () => {
   }
 
   const handleAddToCart = async (variantId, quantity) => {
-    const item = await commerce.cart.add(variantId, quantity);
+  try {
+    const variantData = { type: 'variant', id: variantId };
+    const item = await commerce.cart.add(parseInt(quantity), variantData);
     setCart(item.cart);
-  };
+    console.log('Item added to cart:', item);
+  } catch (error) {
+    console.error('Failed to add item to cart:', error);
+  }
+};
+
+  
+
+
   
     
     const handleUpdateCartQty = async (productId, quantity) => {
