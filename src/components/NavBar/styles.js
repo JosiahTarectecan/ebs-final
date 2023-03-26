@@ -12,7 +12,6 @@ export default makeStyles((theme) => ({
     },
   },
   title: {
-    flexGrow: 1,
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
@@ -26,9 +25,15 @@ export default makeStyles((theme) => ({
       display: 'none',
     },
   },
-  grow: {
-    flexGrow: 1,
+  centerButtons: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+
   },
+
+  
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,

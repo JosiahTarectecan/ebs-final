@@ -46,33 +46,16 @@ const Navbar = ({totalItems}) => {
                   <Typography variant="body2">Login</Typography>
               </Badge>
           </IconButton>
-          <IconButton component={Link} to="/register" aria-label="Register" color="inherit">
+          <IconButton component={Link} to="/account" aria-label="Login" color="inherit">
               <Badge>
-                  <Typography variant="body2">Register</Typography>
+                  <Typography variant="body2">Account</Typography>
               </Badge>
           </IconButton>
         </div>
 
 
-        
-        <div className={classes.grow}/>
         {location.pathname === '/products' && (
-        <div className={classes.search}>
-            <div className={classes.searchIcon}>
-                <Search />
-            </div>
-            <InputBase
-                placeholder="Search products…"
-                classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-            />
-        </div>
-        )}
-        {location.pathname === '/products' && (
-        <div className={classes.button}>
+        <div className={classes.staticButtons}>
             <IconButton component={Link} to="/cart" aria-label='Show cart items' color='inherit'>
                 <Badge badgeContent={totalItems} color='secondary' overlap="rectangular">
                     <ShoppingCart />

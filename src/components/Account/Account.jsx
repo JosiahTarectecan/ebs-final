@@ -28,21 +28,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 function Account() {
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    commerce.customer
-      .about()
-      .then((result) => setUser(result))
-      .catch((error) => console.log(error));
-    commerce.customer
-      .orders()
-      .then((result) => setOrders(result.data))
-      .catch((error) => console.log(error));
-  }, []);
+  
 
   return (
     <Container maxWidth="md" className={classes.container}>
@@ -67,13 +60,7 @@ function Account() {
               <strong>Email:</strong> {user ? user.email : "Loading..."}
             </Typography>
           </Box>
-          <Box mt={2}>
-            <Link component={RouterLink} to="/edit-account">
-              <Button variant="contained" color="primary">
-                Edit Account
-              </Button>
-            </Link>
-          </Box>
+          
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="h6">Order History</Typography>

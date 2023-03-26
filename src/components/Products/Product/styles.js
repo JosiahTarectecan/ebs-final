@@ -22,5 +22,6 @@ export default makeStyles(() => ({
     height: '40px', // set a height to make the Select component visible
     width: '60px',
     fontSize: '1rem',
+    color: 'black',
   },
 }));
