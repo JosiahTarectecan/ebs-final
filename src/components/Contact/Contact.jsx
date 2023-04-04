@@ -1,18 +1,25 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
+import { TextField, Button, Typography } from "@material-ui/core";
 
 const StyledMessage = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: green;
   font-size: 24px;
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin: auto;
+  width: 600px;
+  height: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
+
 
 const StyledContactForm = styled.div`
   display: flex;
@@ -20,33 +27,27 @@ const StyledContactForm = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  form {
+
+  .form {
     background-color: #fff;
     padding: 1.6rem;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 600px;
-    label {
+
+    .MuiTypography-root {
       font-size: 1.2rem;
       font-family: "Open Sans", sans-serif;
       margin-top: 1rem;
       display: block;
     }
-    input[type="text"],
-    input[type="email"],
-    textarea {
+
+    .MuiTextField-root {
       width: 100%;
-      padding: 0.5rem;
       margin-top: 1rem;
-      font-size: 1.2rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
     }
-    textarea {
-      height: 6rem;
-      resize: none;
-    }
-    input[type="submit"] {
+
+    .MuiButton-root {
       width: 100%;
       margin-top: 1.5rem;
       padding: 1rem;
@@ -56,6 +57,7 @@ const StyledContactForm = styled.div`
       border-radius: 0.5rem;
       font-size: 1.2rem;
       cursor: pointer;
+
       &:hover {
         background-color: #00a0e9;
       }
@@ -63,24 +65,12 @@ const StyledContactForm = styled.div`
   }
 `;
 
-const StyledConfirmationMessage = styled.div`
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 20px;
-  font-family: "Montserrat", sans-serif; /* Change font to Montserrat */
 
-  button {
-    font-size: 14px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    
-  }
-`;
+
+
+
+
+
 
 
 
@@ -95,6 +85,8 @@ const Contact = () => {
   
     const sendEmail = (e) => {
       e.preventDefault();
+
+      
 
       const userName = form.current.user_name.value.trim();
   const userEmail = form.current.user_email.value.trim();
@@ -131,30 +123,66 @@ const Contact = () => {
           }
         );
     };
+
+    const handleNewMessageClick = () => {
+      setShowForm(true);
+    };
+  
+
+    
   
     return (
+      <div>
+      {showForm ? (
       <StyledContactForm>
-        {showForm ? (
-          <form ref={form} onSubmit={sendEmail}>
-            <label>Name</label>
-            <input type="text" name="user_name" />
-            <label>Email</label>
-            <input type="email" name="user_email" />
-            <label>Message</label>
-            <textarea name="message" />
-            <input type="submit" value="Send" />
-          </form>
-        ) : (
-          <StyledConfirmationMessage>
-            <p>Email sent!</p>
-            <button onClick={() => setShowForm(true)}>Send another message</button>
-          </StyledConfirmationMessage>
-        )}
+      <form ref={form} onSubmit={sendEmail} className="form">
+      <Typography variant="h4" component="h2">
+      Contact Me
+      </Typography>
+      <Typography variant="body1">
+      Have a question about custom orders or refunds? Fill out the form below and I'll get back to you as soon as possible!
+      </Typography>
+      <TextField required id="user_name" name="user_name" label="Name" variant="outlined" />
+      <TextField
+                 required
+                 id="user_email"
+                 name="user_email"
+                 label="Email"
+                 variant="outlined"
+                 type="email"
+               />
+      <TextField
+                 required
+                 id="message"
+                 name="message"
+                 label="Message"
+                 variant="outlined"
+                 multiline
+                 rows={4}
+               />
+      <Button type="submit" variant="contained">
+      Send Message
+      </Button>
+      </form>
       </StyledContactForm>
-    );
-  };
+      ) : (
+      <StyledMessage>
+      Your message has been sent! Thank you for reaching out.
+      <Button variant="contained" onClick={handleNewMessageClick}>
+            Submit another message
+          </Button>
+      </StyledMessage>
+      )}
+      </div>
+      );
+      };
+      
+      export default Contact;
+      
+      
+      
+      
   
-  export default Contact;
   
   
   

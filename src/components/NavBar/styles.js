@@ -1,11 +1,14 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 0;
 
 export default makeStyles((theme) => ({
   appBar: {
+    backgroundColor: 'transparent',
     boxShadow: 'none',
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    borderBottom: 'none',
+    width: '100%',
+    height: '100%',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
@@ -32,14 +35,12 @@ export default makeStyles((theme) => ({
     flex: 1,
 
   },
-
-  
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: theme.palette.common.white,
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+      backgroundColor: theme.palette.common.white,
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,

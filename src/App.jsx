@@ -16,7 +16,6 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
 
-
   const fetchVariants = async (productId) => {
     try {
       const { data } = await commerce.products.getVariants(productId);
@@ -27,21 +26,23 @@ const App = () => {
     }
   };
   
+  
+  
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
     const productsWithVariants = await Promise.all(
-      data.map(async (product) => {
+      data.map(async (product, quantity) => {
         const variants = await fetchVariants(product.id);
         return {
           ...product,
+          quantity,
           variants,
         };
       })
     );
     setProducts(productsWithVariants);
   };
-
   
   
 
@@ -50,16 +51,11 @@ const App = () => {
     
   }
 
-  const handleAddToCart = async (variantId, quantity) => {
-  try {
-    const variantData = { type: 'variant', id: variantId };
-    const item = await commerce.cart.add(quantity, variantData);
+  const handleAddToCart = async (productId, quantity, variantId) => {
+    const item = await commerce.cart.add(productId, quantity, variantId);
+    console.log(item);
     setCart(item);
-    console.log('Item added to cart:', item);
-  } catch (error) {
-    console.error('Failed to add item to cart:', error);
-  }
-};
+  };
 
   
 
@@ -116,7 +112,7 @@ fetchCart();
       <Route path="/about" element={<About about={about}/>} />
       <Route path="/contact" element={<Contact contact={contact}/>} />
       <Route path="/login" element={<Login login={login}/>} />
-      <Route path="/account" element={<Account account={account} /> } />
+      <Route path="/account/:login" element={<Account account={account} /> } />
 
 
 
