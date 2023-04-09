@@ -66,10 +66,20 @@ const LANGUAGES = [
               </Typography>
               <Box component="ul" sx={{ m: 0, listStyle: 'none', p: 0 }}>
                 <Box component="li" sx={{ py: 0.5 }}>
-                  <Link href="/premium-themes/onepirate/terms/">Terms</Link>
+                  <Link href="/terms">Terms</Link>
                 </Box>
                 <Box component="li" sx={{ py: 0.5 }}>
-                  <Link href="/premium-themes/onepirate/privacy/">Privacy</Link>
+                  <Link href="/privacy">Privacy</Link>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={6} sm={4} md={2}>
+              <Typography variant="h6" marked="left" gutterBottom>
+                Contact
+              </Typography>
+              <Box component="ul" sx={{ m: 0, listStyle: 'none', p: 0 }}>
+                <Box component="li" sx={{ py: 0.5 }}>
+                  <Link href="/contact">Email Us!</Link>
                 </Box>
               </Box>
             </Grid>
@@ -93,6 +103,7 @@ const LANGUAGES = [
                 ))}
               </TextField>
             </Grid>
+            
             {/* <Grid item>
               <Typography variant="caption">
                 {'Icons made by '}

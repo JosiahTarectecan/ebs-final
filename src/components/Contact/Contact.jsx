@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import { TextField, Button, Typography } from "@material-ui/core";
+import AppFooter from '../Views/AppFooter'
 
 const StyledMessage = styled.div`
   display: flex;
@@ -18,7 +19,23 @@ const StyledMessage = styled.div`
   width: 600px;
   height: 200px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+
+  button {
+    margin-top: 20px;
+    background-color: #254ccc;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #00a0e9;
+    }
+  }
 `;
+
 
 
 const StyledContactForm = styled.div`
@@ -132,6 +149,7 @@ const Contact = () => {
     
   
     return (
+      <body>
       <div>
       {showForm ? (
       <StyledContactForm>
@@ -174,6 +192,8 @@ const Contact = () => {
       </StyledMessage>
       )}
       </div>
+      <AppFooter/>
+      </body>
       );
       };
       

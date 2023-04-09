@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/Commerce';
-import {Products, Navbar, Cart, Checkout, About, Home, Contact, Login, Account} from './components';
+import {Products, Navbar, Cart, Checkout, About, Home, Contact, Login, Account, Terms, Privacy} from './components';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { set } from 'react-hook-form';
 
@@ -12,6 +12,10 @@ const App = () => {
   const [contact] = useState({});
   const [account] = useState({});
   const [login] = useState({});
+  const [terms] = useState({});
+  const [privacy] = useState({});
+
+
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -112,6 +116,10 @@ fetchCart();
       <Route path="/about" element={<About about={about}/>} />
       <Route path="/contact" element={<Contact contact={contact}/>} />
       <Route path="/login" element={<Login login={login}/>} />
+      <Route path="/terms" element={<Terms terms={terms}/>} />
+      <Route path="/privacy" element={<Privacy privacy={privacy}/>} />
+
+
       <Route path="/account/:login" element={<Account account={account} /> } />
 
 

@@ -5,27 +5,34 @@ import { Grid, Typography, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
+  body: {
+  margin: 0,
+  padding: 0,
+  overflow: 'hidden',
+  
+  },
+
   root: {
     margin: 0,
     padding: 0,
     fontFamily: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif',
     overflow: 'hidden',
-    height: '100%',
-    width: '100%',
+    height: '100vh',
+    width: '100vw',
     position: 'relative',
     marginLeft: '-10px',
     marginBottom: '-50px',
     marginRight: '-20px',
   },
   main: {
-    width: '100%',
-    height: '100%',
+    width: '105%',
+    height: '105%',
     position: 'relative',
   },
   video: {
     width: '100%',
     height: '100%',
-    objectFit: 'cover',
+    objectFit: 'fill',
   },
   content: {
     position: 'absolute',
@@ -37,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     color: 'white',
+    justifyItems: 'center',
   },
   overlay: {
     position: 'absolute',
@@ -59,6 +67,8 @@ const Home = () => {
   const classes = useStyles();
 
   return (
+    <html className={classes.body}>
+    <body className={classes.body}>
     <div className={classes.root}>
       <div className={classes.main}>
         <div className={classes.overlay}></div>
@@ -85,6 +95,8 @@ const Home = () => {
         </div>
       </div>
     </div>
+    </body>
+    </html>
   );
 };
 

@@ -71,4 +71,15 @@ export default makeStyles((theme) => ({
       width: '20ch',
     },
   },
+
+  staticButtons: {
+    display: 'flex',
+    width: 120,
+    justifyContent: 'space-between',
+    '& > *': {
+      marginRight: theme.spacing(2),
+    },
+  },
+
+  
 }));

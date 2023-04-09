@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import animeImage from '../../assets/ebs1.jpg';
+import AppFooter from '../Views/AppFooter'
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -14,18 +16,28 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
     background: `url(${animeImage}) no-repeat center center fixed`,
     backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
     position: 'relative',
-    width: '100%',
-    padding: 0,
+    padding: -5,
+    maxWidth: '100%',
+
   },
 
   content: {
-    maxWidth: '600px',
+    maxWidth: '800px',
     margin: '0 auto',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    padding: theme.spacing(8, 2),
+    backgroundColor: 'white',
+    padding: theme.spacing(8),
     borderRadius: theme.spacing(2),
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
   },
+  
   aboutTitle:{
     padding: '10px',
     fontWeight: 'bold',
@@ -44,6 +56,7 @@ const About = () => {
   const classes = useStyles();
 
   return (
+    <body>
     <Container className={classes.container}>
       <div className={classes.content}>
         <Typography className={classes.aboutTitle} variant="h4" gutterBottom>
@@ -63,6 +76,9 @@ const About = () => {
         </Typography>
       </div>
     </Container>
+    <AppFooter/>
+
+    </body>
   );
 };
 

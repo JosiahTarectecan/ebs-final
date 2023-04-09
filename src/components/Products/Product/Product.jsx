@@ -25,15 +25,15 @@ const Product = ({ product, onAddToCart, handleUpdateProduct }) => {
       <CardMedia className={classes.media} image={product.image.url} title={product.name} />
       <CardContent>
         <div className={classes.cardContent}>
-          <Typography variant="h5" gutterBottom>
+          <Typography className={classes.productName} variant="h5" gutterBottom>
             {product.name}
           </Typography>
-          <Typography variant="h5">{product.price.formatted_with_code}</Typography>
+          <Typography className={classes.productPrice} variant="h5">{product.price.formatted_with_code}</Typography>
         </div>
-        <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" />
-        <Typography variant="h5">Select a Size & Color</Typography>
+        <Typography className={classes.productDescription} dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" />
+        <Typography className={classes.selectLabel} variant="h6">Select a Size & Color</Typography>
         {product.variants?.length ? (
-          <Select value={selectedVariant} fullWidth onChange={handleVariantSelect}>
+          <Select className={classes.variantSelect} value={selectedVariant} fullWidth onChange={handleVariantSelect}>
             {product.variants.map((variant) => (
               <MenuItem key={variant.id} value={variant.id}>
                 {variant.description || variant.name}

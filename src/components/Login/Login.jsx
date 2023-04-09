@@ -3,6 +3,8 @@ import emailjs from "@emailjs/browser";
 import { TextField, Button, Box, Typography} from '@material-ui/core';
 import Commerce from '@chec/commerce.js';
 import styled from 'styled-components';
+import AppFooter from '../Views/AppFooter'
+
 
 const commerce = new Commerce('pk_test_4990074a0f53d5cf83cd1a57ee397bbf8289e32033d57');
 
@@ -35,6 +37,7 @@ const Login = () => {
   };
   
   return (
+    <body>
     <LoginContainer>
 
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -64,8 +67,10 @@ const Login = () => {
 
       )}
     </div>
-    </LoginContainer>
 
+    </LoginContainer>
+    <AppFooter/>
+    </body>
   );
 
 };

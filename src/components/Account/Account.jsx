@@ -17,125 +17,50 @@ import { AccountCircle } from "@mui/icons-material";
 import Commerce from '@chec/commerce.js';
 const commerce = new Commerce('pk_test_4990074a0f53d5cf83cd1a57ee397bbf8289e32033d57');
 
+
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f2f2f2",
-    borderRadius: "8px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-    width: "100%",
-    margin: "0 auto",
-    [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(10),
-      paddingBottom: theme.spacing(10),
-      maxWidth: "800px",
-    },
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
   },
   avatar: {
-    width: theme.spacing(12),
-    height: theme.spacing(12),
-    backgroundColor: "#ffffff",
-    boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-    marginRight: theme.spacing(4),
-  },
-  divider: {
-    margin: theme.spacing(4, 0),
-    backgroundColor: "#333333",
-    height: "1px",
+    backgroundColor: theme.palette.secondary.main,
   },
   heading: {
-    color: "#333333",
-    fontWeight: "bold",
-    marginBottom: theme.spacing(4),
-  },
-  subheading: {
-    color: "#333333",
-    fontWeight: "bold",
     marginBottom: theme.spacing(2),
   },
-  content: {
-    color: "#333333",
-    marginBottom: theme.spacing(4),
-    textAlign: "left",
-  },
-  link: {
-    color: theme.palette.primary.main,
-    fontWeight: "bold",
+  divider: {
+    margin: theme.spacing(2, 0),
   },
   loader: {
-    textAlign: "center",
+    textAlign: 'center',
+    marginTop: theme.spacing(4),
   },
   infoBox: {
-    width: "50%", // add this
-    backgroundColor: "#ffffff",
-    borderRadius: "4px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-    padding: theme.spacing(2),
     marginBottom: theme.spacing(4),
   },
   infoTitle: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: theme.spacing(2),
   },
   infoItem: {
     marginBottom: theme.spacing(1),
   },
   addressBox: {
-    width: "50%", // add this
-
-    backgroundColor: "#ffffff",
-    borderRadius: "4px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-    padding: theme.spacing(2),
     marginBottom: theme.spacing(4),
   },
   addressTitle: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: theme.spacing(2),
   },
   addressItem: {
     marginBottom: theme.spacing(1),
   },
   orderItem: {
-    padding: theme.spacing(2),
-    backgroundColor: theme.palette.grey[100],
-    borderRadius: theme.spacing(1),
-    '&:not(:last-child)': {
-      marginBottom: theme.spacing(2),
-    },
-  },
-  orderHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: theme.spacing(1),
-  },
-  orderDetails: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: theme.spacing(1),
     marginBottom: theme.spacing(2),
   },
-  orderProduct: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: theme.spacing(1),
+  orderHeader: {
     marginBottom: theme.spacing(1),
-  },
-  orderImage: {
-    width: theme.spacing(8),
-    height: theme.spacing(8),
-    objectFit: 'cover',
-    borderRadius: theme.spacing(1),
-  },
-  orderProductName: {
-    fontWeight: 'bold',
-    fontSize: '1rem',
   },
 }));
 

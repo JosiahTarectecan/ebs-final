@@ -15,13 +15,12 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
       />
       <CardContent className={classes.cardContent}>
         <div>
-          <Typography variant="h5">{item.name}</Typography>
-          <Typography variant="body2">Type</Typography>
-          <Typography variant="body2">{item.variant?.description || item.variant?.name}</Typography>
+          <Typography variant="h6">{item.name}</Typography>
+          <Typography variant="subtitle2" color="textSecondary">{item.variant?.description || item.variant?.name}</Typography>
         </div>
         <div>
-        <Typography variant="body2">Amount</Typography>
-          <Typography variant="h5">{item.line_total.formatted_with_symbol}</Typography>
+          <Typography variant="subtitle2" color="textSecondary">Price</Typography>
+          <Typography variant="h6" color="primary">{item.line_total.formatted_with_symbol}</Typography>
         </div>
       </CardContent>
       <CardActions className={classes.cartActions}>
@@ -34,7 +33,7 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
           >
             -
           </Button>
-          <Typography className={classes.quantity}>{item.quantity}</Typography>
+          <Typography className={classes.quantity} variant="subtitle1">{item.quantity}</Typography>
           <Button
             type="button"
             size="small"
@@ -44,7 +43,7 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
           </Button>
         </div>
         <Button
-          variant="contained"
+          variant="outlined"
           type="button"
           color="secondary"
           onClick={() => onRemoveFromCart(item.id)}
