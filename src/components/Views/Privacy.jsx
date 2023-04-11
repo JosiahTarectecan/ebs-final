@@ -2,9 +2,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Typography } from '@material-ui/core';
+import AppFooter from './AppFooter'
 
 export default function Privacy() {
   return (
+    <main>
     <Box sx={{ bgcolor: 'background.paper', p: 8 }}>
       <Container maxWidth="md">
         <Typography variant="h4" component="h1" gutterBottom>
@@ -51,5 +53,8 @@ export default function Privacy() {
 </Typography>
 </Container>
 </Box>
+<AppFooter/>
+</main>
+
 );
 }

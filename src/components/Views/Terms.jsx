@@ -2,9 +2,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Typography, List, ListItem } from '@material-ui/core';
+import AppFooter from './AppFooter'
 
 export default function Terms() {
   return (
+    <main>
     <Box sx={{ bgcolor: 'background.paper', p: 8 }}>
       <Container maxWidth="md">
         <Typography variant="h4" component="h1" gutterBottom>
@@ -67,6 +69,9 @@ These terms and conditions will be governed by and construed in accordance with 
 </Typography>
 </Container>
 </Box>
+<AppFooter/>
+</main>
+
 );
 }
 

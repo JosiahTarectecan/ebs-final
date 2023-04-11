@@ -1,18 +1,33 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Badge, Typography, InputBase} from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Badge, Typography, InputBase, ThemeProvider} from '@material-ui/core';
 import { ShoppingCart, Search } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
+import { createTheme } from '@material-ui/core/styles';
 
 import logo from '../../assets/Eastbluesagalogo2.png';
 import useStyles from './styles';
-
+const theme = createTheme({
+    breakpoints: {
+      values: {
+        xs: 0, // Extra small devices (portrait phones)
+        sm: 600, // Small devices (landscape phones)
+        md: 960, // Medium devices (tablets)
+        lg: 1280, // Large devices (desktops)
+        xl: 1920, // Extra large devices (large desktops)
+      },
+    },
+    // ... other theme options
+  });
+  
+  
 const Navbar = ({totalItems}) => {
     const classes = useStyles();
     const location = useLocation();
 
   return (
     <>
-    
+        <ThemeProvider theme={theme}> {/* Wrap your component with ThemeProvider */}
+
     <AppBar position="static" className={classes.appBar} color="inherit">
     <Toolbar>
         <Typography component={Link} to="/" variant='h6' className={classes.title} color='inherit'>
@@ -67,6 +82,8 @@ const Navbar = ({totalItems}) => {
         </div> )}
     </Toolbar>
     </AppBar>
+        </ThemeProvider>
+
     </>
   )
 }

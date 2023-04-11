@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   body: {
-  margin: 0,
-  padding: 0,
-  overflow: 'hidden',
-  
+    margin: 0,
+    padding: 0,
+    overflow: 'hidden',
   },
 
   root: {
@@ -20,25 +19,24 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     width: '100vw',
     position: 'relative',
-    marginLeft: '-10px',
-    marginBottom: '-50px',
-    marginRight: '-20px',
+   
   },
   main: {
-    width: '105%',
-    height: '105%',
+    width: '100%',
+    height: '100%',
     position: 'relative',
   },
   video: {
     width: '100%',
     height: '100%',
-    objectFit: 'fill',
+    objectFit: 'cover',
   },
   content: {
     position: 'absolute',
     width: '100%',
     height: '100%',
-    top: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -57,11 +55,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(2),
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      maxWidth: '400px',
-    },
+    maxWidth: '400px', // remove breakpoint
   },
 }));
+
 
 const Home = () => {
   const classes = useStyles();
