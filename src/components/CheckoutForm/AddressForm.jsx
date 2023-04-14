@@ -15,6 +15,7 @@ const AddressForm = ({checkoutToken, next}) => {
   const [shippingOption, setShippingOption] = useState('');
   const methods = useForm();
 
+  // Fetch shipping countries using the checkout token ID
 
   const fetchShippingCountries = async (checkoutTokenId) => {
     const {countries} = await commerce.services.localeListShippingCountries(checkoutTokenId);
@@ -22,6 +23,8 @@ const AddressForm = ({checkoutToken, next}) => {
     setShippingCountries(countries);
     setShippingCountry(Object.keys(countries)[0]);
   }
+
+    // Fetch subdivisions using the checkout token ID and selected country code
 
   const fetchSubdivisions = async (tokenId, countryCode) => {
     const {subdivisions} = await commerce.services.localeListShippingSubdivisions(tokenId, countryCode);
@@ -32,6 +35,8 @@ const AddressForm = ({checkoutToken, next}) => {
 
   }
 
+    // Fetch shipping options using the checkout token ID, selected country, and selected subdivision
+
   const fetchShippingOptions = async (checkoutTokenId, country, stateProvince = null) => {
   const options = await commerce.checkout.getShippingOptions(checkoutTokenId, {country, region: stateProvince});
     
@@ -40,14 +45,17 @@ const AddressForm = ({checkoutToken, next}) => {
     setShippingOption(options[0].id);
   }
 
+    // Fetch shipping countries when the component mounts
   useEffect(() => {
     fetchShippingCountries(checkoutToken.id)
   }, []);
 
+    // Fetch subdivisions when the selected country changes
   useEffect(() =>{
     if(shippingCountry) fetchSubdivisions(checkoutToken.id, shippingCountry);
   }, [shippingCountry]);
 
+    // Fetch shipping options when the selected subdivision changes
   useEffect(() =>{
     if (shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
   }, [shippingSubdivision]);

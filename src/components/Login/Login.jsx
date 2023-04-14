@@ -26,7 +26,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await commerce.customer.login(email, 'https://harmonious-eclair-eec576.netlify.app/account');
+      const result = await commerce.customer.login(email, 'https://eastbluesaga.netlify.app/account');
       console.log('result:', result);
       setToken(result.token);
       console.log('token:', result.token);
